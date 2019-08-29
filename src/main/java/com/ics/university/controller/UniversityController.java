@@ -2,6 +2,7 @@ package com.ics.university.controller;
 
 import com.ics.university.models.University;
 import com.ics.university.services.UniversityService;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public class UniversityController {
     }
 
     @PostMapping
-    University createUniversity(@RequestBody University university) {
+    University createUniversity(@Validated(University.Create.class)@RequestBody University university) {
         return universityService.createUniversity(university);
     }
 
@@ -35,8 +36,13 @@ public class UniversityController {
         universityService.delete(id);
     }
 
+    @PatchMapping
+    public University updateUniversity(@Validated(University.Update.class)@RequestBody University university) {
+        return universityService.update(university);
+    }
+
     @PatchMapping(value = "{id}")
-    public University updateUniversity(@PathVariable Long id, @RequestBody University university) {
+    public University updateUniversity(@Validated(University.Update.class)@PathVariable Long id, @RequestBody University university) {
         return universityService.update(id, university);
     }
 }

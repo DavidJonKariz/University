@@ -1,6 +1,8 @@
 package com.ics.university.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.net.InterfaceAddress;
 
 @Entity
 @Table(name = "universities")
@@ -8,10 +10,13 @@ public class University {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
+    @NotNull(groups = Update.class)
     @Column(name = "id")
     private Long id;
+    @NotNull(groups = Create.class)
     @Column(name = "name")
     private String name;
+    @NotNull(groups = Create.class)
     @Column(name = "location")
     private String location;
     @Column(name = "year_founded")
@@ -55,4 +60,10 @@ public class University {
     public void setYearFounded(String yearFounded) {
         this.yearFounded = yearFounded;
     }
+
+    public interface Update {}
+
+    public interface Create {}
+
+
 }
