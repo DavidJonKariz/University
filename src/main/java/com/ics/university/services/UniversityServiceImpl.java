@@ -1,5 +1,6 @@
 package com.ics.university.services;
 
+import com.ics.university.NotFoundException;
 import com.ics.university.models.University;
 import com.ics.university.repositories.UniversityRepository;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,8 @@ public class UniversityServiceImpl implements UniversityService {
 
     @Override
     public University findById(Long id) {
-        return universityRepository.findById(id).get();
+        return universityRepository.findById(id).orElseThrow(() ->
+                new NotFoundException("No University with ID: " + id + " found."));
     }
 
     @Override
@@ -41,11 +43,19 @@ public class UniversityServiceImpl implements UniversityService {
 
     @Override
     public University update(University university) {
-        return null;
+        University found = findById(university.getId());
+        found.setName(university.getName());
+        found.setLocation(university.getLocation());
+        found.setYearFounded(university.getYearFounded());
+        return universityRepository.save(found);
     }
 
     @Override
     public University update(Long id, University university) {
-        return null;
+        University found = findById(id);
+        found.setName(university.getName());
+        found.setLocation(university.getLocation());
+        found.setYearFounded(university.getYearFounded());
+        return universityRepository.save(found);
     }
 }
