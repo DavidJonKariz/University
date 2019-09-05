@@ -1,6 +1,6 @@
-package com.ics.university.repositories;
+package com.ics.students.repositories;
 
-import com.ics.university.models.University;
+import com.ics.students.models.University;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UniversityRepository extends JpaRepository<University, Long> {

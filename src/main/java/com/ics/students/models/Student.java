@@ -1,10 +1,9 @@
 package com.ics.students.models;
 
-import com.ics.university.models.University;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
 
 @Entity
 @Table(name = "student")
@@ -31,6 +30,7 @@ public class Student {
     private String date_of_birth;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "university_id")
     private University university;
 

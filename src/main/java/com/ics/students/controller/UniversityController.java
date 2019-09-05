@@ -1,8 +1,8 @@
-package com.ics.university.controller;
+package com.ics.students.controller;
 
 import com.ics.students.models.Student;
-import com.ics.university.models.University;
-import com.ics.university.services.UniversityService;
+import com.ics.students.models.University;
+import com.ics.students.services.UniversityService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 

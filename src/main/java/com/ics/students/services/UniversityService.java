@@ -1,7 +1,7 @@
-package com.ics.university.services;
+package com.ics.students.services;
 
 import com.ics.students.models.Student;
-import com.ics.university.models.University;
+import com.ics.students.models.University;
 
 import java.util.List;
 

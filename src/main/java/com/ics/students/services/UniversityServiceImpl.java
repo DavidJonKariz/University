@@ -1,10 +1,9 @@
-package com.ics.university.services;
+package com.ics.students.services;
 
+import com.ics.students.NotFoundException;
 import com.ics.students.models.Student;
-import com.ics.students.services.StudentService;
-import com.ics.university.NotFoundException;
-import com.ics.university.models.University;
-import com.ics.university.repositories.UniversityRepository;
+import com.ics.students.models.University;
+import com.ics.students.repositories.UniversityRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

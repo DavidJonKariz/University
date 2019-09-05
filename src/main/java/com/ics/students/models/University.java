@@ -1,10 +1,11 @@
-package com.ics.university.models;
+package com.ics.students.models;
 
 import com.ics.students.models.Student;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.net.InterfaceAddress;
+import java.util.List;
 
 @Entity
 @Table(name = "universities")
@@ -27,9 +28,8 @@ public class University {
     @Column(name = "year_founded")
     private String yearFounded;
 
-//    @OneToMany
-//    @JoinColumn(name = "student_id")
-//    private Student student;
+    @OneToMany(mappedBy = "university")
+    private List<Student> students;
 
     private University() {}
 
@@ -74,5 +74,11 @@ public class University {
 
     public interface Create {}
 
+    public List<Student> getStudents() {
+        return students;
+    }
 
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
 }
