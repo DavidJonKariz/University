@@ -1,5 +1,7 @@
 package com.ics.university.models;
 
+import com.ics.students.models.Student;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.net.InterfaceAddress;
@@ -13,14 +15,21 @@ public class University {
     @NotNull(groups = Update.class)
     @Column(name = "id")
     private Long id;
+
     @NotNull(groups = Create.class)
     @Column(name = "name")
     private String name;
+
     @NotNull(groups = Create.class)
     @Column(name = "location")
     private String location;
+
     @Column(name = "year_founded")
     private String yearFounded;
+
+//    @OneToMany
+//    @JoinColumn(name = "student_id")
+//    private Student student;
 
     private University() {}
 

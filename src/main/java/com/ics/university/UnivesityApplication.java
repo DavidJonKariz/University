@@ -1,6 +1,5 @@
 package com.ics.university;
 
-import com.ics.trial_3.misc_animals.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

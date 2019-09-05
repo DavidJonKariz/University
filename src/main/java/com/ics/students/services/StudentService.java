@@ -8,7 +8,7 @@ public interface StudentService {
     List<Student> findAll();
     Student findById(Long id);
     void delete(Long id);
-    Student createUniversity(Student student);
+    Student createStudent(Student student);
     Student update(Student student);
     Student update(Long id, Student student);
 }

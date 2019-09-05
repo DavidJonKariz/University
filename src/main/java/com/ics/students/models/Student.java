@@ -1,11 +1,13 @@
 package com.ics.students.models;
 
+import com.ics.university.models.University;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
-@Table(name = "universities")
+@Table(name = "student")
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,6 +29,10 @@ public class Student {
 
     @Column(name = "date_of_birth")
     private String date_of_birth;
+
+    @ManyToOne
+    @JoinColumn(name = "university_id")
+    private University university;
 
     private Student() {}
 
@@ -81,5 +87,11 @@ public class Student {
 
     public interface Create {}
 
+    public University getUniversity() {
+        return university;
+    }
 
+    public void setUniversity(University university) {
+        this.university = university;
+    }
 }

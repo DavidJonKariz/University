@@ -1,5 +1,6 @@
 package com.ics.university.controller;
 
+import com.ics.students.models.Student;
 import com.ics.university.models.University;
 import com.ics.university.services.UniversityService;
 import org.springframework.validation.annotation.Validated;
@@ -45,4 +46,11 @@ public class UniversityController {
     public University updateUniversity(@Validated(University.Update.class)@PathVariable Long id, @RequestBody University university) {
         return universityService.update(id, university);
     }
+
+    //Student
+    @PostMapping(value = "{id}/students")
+    public Student createStudent(@PathVariable Long id, @RequestBody Student student) {
+        return universityService.createStudent(id, student);
+    }
+
 }

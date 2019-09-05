@@ -34,7 +34,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Student createUniversity(Student student) {
+    public Student createStudent(Student student) {
         return studentRepository.save(student);
     }
 

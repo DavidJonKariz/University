@@ -27,22 +27,22 @@ public class StudentController {
     }
 
     @PostMapping
-    Student createUniversity(@Validated(Student.Create.class)@RequestBody Student student) {
-        return studentService.createUniversity(student);
+    Student createStudent(@Validated(Student.Create.class)@RequestBody Student student) {
+        return studentService.createStudent(student);
     }
 
     @DeleteMapping(value = "{id}")
-    public void deleteUniversity(@PathVariable Long id) {
+    public void deleteStudent(@PathVariable Long id) {
         studentService.delete(id);
     }
 
     @PatchMapping
-    public Student updateUniversity(@Validated(Student.Update.class)@RequestBody Student student) {
+    public Student updateStudent(@Validated(Student.Update.class)@RequestBody Student student) {
         return studentService.update(student);
     }
 
     @PatchMapping(value = "{id}")
-    public Student updateUniversity(@Validated(Student.Update.class)@PathVariable Long id, @RequestBody Student student) {
+    public Student updateStudent(@Validated(Student.Update.class)@PathVariable Long id, @RequestBody Student student) {
         return studentService.update(id, student);
     }
 }
