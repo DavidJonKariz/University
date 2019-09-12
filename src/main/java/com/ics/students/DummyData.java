@@ -34,7 +34,7 @@ public class DummyData implements CommandLineRunner {
 
 //        Courses
         Course course = new Course("Application Programming for the Internet");
-//        courseRepository.save(course);
+        courseRepository.save(course);
         Course course_un = new Course("Distributed Objects and Web Services");
         courseRepository.save(course_un);
 
@@ -47,8 +47,9 @@ public class DummyData implements CommandLineRunner {
         studentRepository.save(trevor);
 
         course.addStudent(trevor);
-//        course_un.addStudent(david);
+        course.addStudent(nicollet);
+        course_un.addStudent(david);
         courseRepository.save(course);
-//        courseRepository.save(course_un);
+        courseRepository.save(course_un);
     }
 }

@@ -1,5 +1,7 @@
 package com.ics.students.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,6 +19,7 @@ public class Course {
 
     //Students
     @ManyToMany
+    @JsonIgnore
     @JoinTable(name = "student_courses",
             joinColumns = @JoinColumn(name = "course_id"),
             inverseJoinColumns = @JoinColumn(name = "student_id"))

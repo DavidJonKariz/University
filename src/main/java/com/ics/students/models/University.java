@@ -81,4 +81,15 @@ public class University {
     public void setStudents(List<Student> students) {
         this.students = students;
     }
+
+    @Override
+    public String toString() {
+        return "University{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", location='" + location + '\'' +
+                ", yearFounded='" + yearFounded + '\'' +
+                ", students=" + students +
+                '}';
+    }
 }
