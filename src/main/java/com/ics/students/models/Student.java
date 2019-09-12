@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "student")
@@ -34,13 +36,19 @@ public class Student {
     @JoinColumn(name = "university_id")
     private University university;
 
+    //Courses
+    @ManyToMany(mappedBy = "studentSet")
+    private Set<Course> courseSet = new HashSet<>();
+
     private Student() {}
 
-    public Student(@NotNull(groups = Create.class) String first_name, String middle_name, @NotNull(groups = Create.class) String last_name, String date_of_birth) {
+    public Student(@NotNull(groups = Create.class) String first_name, String middle_name,
+                   @NotNull(groups = Create.class) String last_name, String date_of_birth, University university) {
         this.first_name = first_name;
         this.middle_name = middle_name;
         this.last_name = last_name;
         this.date_of_birth = date_of_birth;
+        this.university = university;
     }
 
     public Long getId() {
@@ -93,5 +101,13 @@ public class Student {
 
     public void setUniversity(University university) {
         this.university = university;
+    }
+
+    public Set<Course> getCourseSet() {
+        return courseSet;
+    }
+
+    public void setCourseSet(Set<Course> courseSet) {
+        this.courseSet = courseSet;
     }
 }
