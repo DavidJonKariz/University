@@ -2,13 +2,14 @@ package com.ics.students.controller;
 
 import com.ics.students.models.Student;
 import com.ics.students.services.StudentService;
+import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "students")
+@RequestMapping(value = "students", produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
 public class StudentController {
     private final StudentService studentService;
 

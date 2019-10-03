@@ -3,8 +3,8 @@ package com.ics.students.models;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Entity
-@Table(name = "test_student")
+//@Entity
+//@Table(name = "test_student")
 public class TestStudent {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

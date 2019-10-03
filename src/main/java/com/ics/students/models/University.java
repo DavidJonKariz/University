@@ -31,6 +31,9 @@ public class University {
     @OneToMany(mappedBy = "university")
     private List<Student> students;
 
+//    @OneToOne
+//    private Student student;
+
     private University() {}
 
     public University(String name, String location) {
