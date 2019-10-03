@@ -1,10 +1,8 @@
 package com.ics.students;
 
-import com.ics.students.models.University;
+import com.ics.students.models.Student;
+import com.ics.students.models.TestStudent;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -12,26 +10,37 @@ import java.util.List;
 
 @Component
 public class TestingRest implements CommandLineRunner {
+
+    private final UniversityFeignRestClient universityFeignRestClient;
+    private final StudentFeignRestClient studentFeignRestClient;
+
+    public TestingRest(UniversityFeignRestClient universityFeignRestClient, StudentFeignRestClient studentFeignRestClient) {
+        this.universityFeignRestClient = universityFeignRestClient;
+        this.studentFeignRestClient = studentFeignRestClient;
+    }
+
     @Override
     public void run(String... args) throws Exception {
         RestTemplate restTemplate = new RestTemplate();
 
-        ResponseEntity<List<University>> response = restTemplate.exchange(
-                "http://10.51.10.111:9090/universities",
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<List<University>>() {});
-        List<University> universities = response.getBody();
-        System.out.println("Response: " + universities.toString());
+//        Universities
+//        List<University> universities;// = response.getBody();
+//
+//        universities = universityFeignRestClient.getAllUniversities();
+//        System.out.println("Feign Universities: " + universities.toString());
+//
+//        University universityTest = universityFeignRestClient.createUniversity(new University("Nairobi University", "CBD"));
+//        System.out.println("Created University: " + universityTest.toString());
+//        universityTest.setYearFounded("1956");
+//        University updatedUniversity = universityFeignRestClient.updateUniversity(universityTest.getId(), universityTest);
+//        System.out.println("Updated University: " + updatedUniversity.toString());
 
-        University university = restTemplate.getForObject(
-                "http://10.51.10.111:9090/universities/5",
-                University.class);
+//        Students
+//        TestStudent studentTest = studentFeignRestClient.createStudent("91937", "Daivd");
+//        System.out.println("Created Student: " + studentTest.toString());
 
-        String url = "http://10.51.10.111:9090/universities/search?name="+university.getName();
+//        Student student = studentFeignRestClient.getStudent(studentTest.getId());
+//        System.out.println("The Student: " + student.toString());
 
-        University searched = restTemplate.getForObject(
-                url,
-                University.class);
     }
 }
